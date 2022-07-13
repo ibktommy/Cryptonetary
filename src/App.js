@@ -1,10 +1,11 @@
 import React from "react";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
-    <>
-      <h1>CryptoVerse</h1>
-    </>
+    <ThemeProvider>
+      
+    </ThemeProvider>
   );
 }
 
