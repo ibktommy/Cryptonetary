@@ -8,9 +8,14 @@ const Navbar = () => {
 			<Link to="/">
 				<h1>Cryptonetary</h1>
 			</Link>
+
 			<div>
 				<ThemeToggleBtn />
 			</div>
+
+			<div>
+        
+      </div>
 		</div>
 	);
 };
