@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ThemeToggleBtn from "./ThemeToggleBtn";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 const Navbar = () => {
+	// Creating State to Monitior Menu-Icon Click
+	const [nav, setNav] = useState(false);
+
+	// Function to Modify the nav-state
+	function toggleNavIcon() {
+		setNav(!nav);
+	}
+
 	return (
 		<div className="rounded-div flex items-center justify-between h-20 font-bold">
 			<Link to="/">
@@ -27,12 +35,21 @@ const Navbar = () => {
 			</div>
 
 			{/* MENU ICON FOR MOBILE DEVICES */}
-			<div className="block md:hidden cursor-pointer z-10">
-				<AiOutlineMenu />
+			<div
+				className="block md:hidden cursor-pointer z-10"
+				onClick={toggleNavIcon}
+			>
+				{!nav ? <AiOutlineMenu size={20} /> : <AiOutlineClose size={20} />}
 			</div>
 
 			{/* MOBILE MENU */}
-			<div className="md:hidden fixed left-0 top-20 flex flex-col items-center justify-between w-full h-[90%] bg-primary ease-in duration-300 z-10">
+			<div
+				className={
+					!nav
+						? "fixed left-[-100%] top-20 h-[90%]"
+						: "md:hidden fixed left-0 top-20 flex flex-col items-center justify-between w-full h-[90%] bg-primary ease-in duration-300 z-10"
+				}
+			>
 				<ul className="w-full p-4">
 					<li className="border-b py-6">
 						<Link to="/">Home</Link>
