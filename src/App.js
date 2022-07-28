@@ -18,7 +18,7 @@ function App() {
     axios.get(apiURL)
       .then((response) => {
         setData(response.data)
-        console.log(response.data)
+        // console.log(response.data)
       })
       .catch((error) => {
         console.log(error.message)
@@ -29,7 +29,7 @@ function App() {
     <ThemeProvider>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home data={data}/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<Account />} />
