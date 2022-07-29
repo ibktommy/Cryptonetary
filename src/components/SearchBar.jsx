@@ -22,15 +22,17 @@ const SearchBar = ({ data }) => {
 
 			<table className="w-full border-collapse text-center">
 				<thead>
-					<th className="px-4"></th>
-					<th className="text-left">#</th>
-					<th>Coin</th>
-					<th></th>
-					<th>Price</th>
-					<th>24hr</th>
-					<th className="hidden md:table-cell">24hr Volume</th>
-					<th className="hidden md:table-cell">Mkt</th>
-					<th>Last 7 Days</th>
+					<tr className="border-b">
+						<th></th>
+						<th className="px-4">#</th>
+						<th className="text-left">Coin</th>
+						<th></th>
+						<th>Price</th>
+						<th>24hr</th>
+						<th className="hidden md:table-cell">24h Volume</th>
+						<th className="hidden md:table-cell">Mkt</th>
+						<th>Last 7 Days</th>
+					</tr>
 				</thead>
 
 				<tbody>
