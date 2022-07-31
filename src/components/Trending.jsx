@@ -1,9 +1,21 @@
-import React from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Trending = () => {
-  return (
-    <div>Trending</div>
-  )
-}
+	const trendingURL = "https://api.coingecko.com/api/v3/search/trending";
 
-export default Trending
+	// Setting State
+	const [trending, setTrending] = useState([]);
+  
+	// UseEffect to Fetch Data
+	useEffect(() => {
+		axios.get(trendingURL).then((response) => {
+			setTrending(response.data.coins);
+			console.log(response.data.coins);
+		});
+	}, []);
+
+	return <div>Trending</div>;
+};
+
+export default Trending;
