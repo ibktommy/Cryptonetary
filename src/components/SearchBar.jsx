@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import DataItem from "./DataItem";
+import DataItem from "./CoinDataItem";
 
 const SearchBar = ({ data }) => {
-	console.log(data);
 
 	const [searchText, setSearchText] = useState("");
 
