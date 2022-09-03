@@ -21,29 +21,42 @@ const CoinPage = () => {
 	return (
 		<div>
 			<div>
-				<img src={coin.image?.large} alt={coin.name} />
+				<img src={coin?.image?.large} alt={coin?.name} />
 				<div>
 					<p>{coin?.name} price</p>
-					<p>({coin.symbol?.toUpperCase}) / USD</p>
+					<p>({coin?.symbol?.toUpperCase}) / USD</p>
 				</div>
 			</div>
 
 			<div>
 				<div>
 					<div>
-						{coin.market_data?.current_price ? (
-							<p>${coin.market_data.current_price.usd.toLocaleString()}</p>
+						{coin?.market_data?.current_price ? (
+							<p>${coin?.market_data?.current_price.usd.toLocaleString()}</p>
 						) : null}
 						<p>7 Days</p>
 					</div>
 
 					<div>
-						<Sparklines data={coin.market_data.sparkline_7d.price}>
+						<Sparklines data={coin?.market_data?.sparkline_7d.price}>
 							<SparklinesLine color="teal " />
 						</Sparklines>
 					</div>
 
-					
+					<div>
+						<div>
+							<p>Market Cap</p>
+							{coin?.market_data?.market_cap ? (
+								<p>{coin?.market_data?.market_cap.usd.toLocaleString()}</p>
+							) : null}
+						</div>
+						<div>
+							<p>Volume (24hr)</p>
+							{coin?.market_data?.market_cap ? (
+								<p>{coin?.market_data.total_volume.usd.toLocaleString()}</p>
+							) : null}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
