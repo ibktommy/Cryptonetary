@@ -24,8 +24,8 @@ const SearchBar = ({ data }) => {
 					<tr className="border-b">
 						<th></th>
 						<th className="px-4">#</th>
-						<th className="text-left">Coin</th>
-						<th></th>
+						<th className="text-left">Coin-Icon</th>
+						<th>Coin-Name</th>
 						<th>Price</th>
 						<th>24hr</th>
 						<th className="hidden md:table-cell">24h Volume</th>
