@@ -15,6 +15,7 @@ const Login = () => {
 								className="w-full p-2 bg-primary border border-input rounded-2xl"
 								type="email"
 								id="email"
+								placeholder="Enter your email"
 							/>
 							<AiOutlineMail className="absolute right-2 top-3 text-gray-400" />
 						</div>
@@ -26,6 +27,7 @@ const Login = () => {
 								className="w-full p-2 bg-primary border border-input rounded-2xl"
 								type="password"
 								name="password"
+								placeholder="Enter your password"
 							/>
 							<AiFillLock className="absolute right-2 top-3 text-gray-400" />
 						</div>
