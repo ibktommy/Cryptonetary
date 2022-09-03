@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Sparklines, SparklinesLine } from "react-sparklines";
 
 const CoinPage = () => {
 	// Setting urlData to state
@@ -32,14 +33,21 @@ const CoinPage = () => {
 					<div>
 						{coin.market_data?.current_price ? (
 							<p>${coin.market_data.current_price.usd.toLocaleString()}</p>
-						) : null
-						}
+						) : null}
 						<p>7 Days</p>
 					</div>
+
+					<div>
+						<Sparklines data={coin.market_data.sparkline_7d.price}>
+							<SparklinesLine color="teal " />
+						</Sparklines>
+					</div>
+
+					
 				</div>
 			</div>
 		</div>
-	)
+	);
 };
 
 export default CoinPage;
