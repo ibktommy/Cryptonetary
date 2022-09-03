@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlineStar } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { Sparklines, SparklinesLine } from "react-sparklines";
 
 const dataItem = ({ dataItem }) => {
@@ -12,14 +13,16 @@ const dataItem = ({ dataItem }) => {
 			<td>{dataItem.market_cap_rank}</td>
 
 			<td>
-				<div className="flex items-center">
-					<img
-						src={dataItem.image}
-						alt={dataItem.id}
-						className="w-6 mr-2 rounded-full"
-					/>
-					<p className="hidden sm-table-cell">{dataItem.name}</p>
-				</div>
+				<Link to={`/coin/${dataItem?.id}`}>
+					<div className="flex items-center">
+						<img
+							src={dataItem.image}
+							alt={dataItem.id}
+							className="w-6 mr-2 rounded-full"
+						/>
+						<p className="hidden sm:table-cell">{dataItem.name}</p>
+					</div>
+				</Link>
 			</td>
 
 			<td>{dataItem.symbol.toUpperCase()}</td>
