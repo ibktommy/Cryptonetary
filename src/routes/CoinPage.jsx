@@ -16,8 +16,30 @@ const CoinPage = () => {
 				console.log(response.data)
 			})
 		}, [url])
-		
-	return <div>CoinPage</div>;
+
+	return (
+		<div>
+			<div>
+				<img src={coin.image?.large} alt={coin.name} />
+				<div>
+					<p>{coin?.name} price</p>
+					<p>({coin.symbol?.toUpperCase}) / USD</p>
+				</div>
+			</div>
+
+			<div>
+				<div>
+					<div>
+						{coin.market_data?.current_price ? (
+							<p>${coin.market_data.current_price.usd.toLocaleString()}</p>
+						) : null
+						}
+						<p>7 Days</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	)
 };
 
 export default CoinPage;
