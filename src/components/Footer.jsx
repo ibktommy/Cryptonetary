@@ -5,55 +5,61 @@ import ThemeToggleBtn from "./ThemeToggleBtn";
 
 const Footer = () => {
 	return (
-		<div>
-			<div>
-				<div>
+		<div className="rounded-div mt8 pt-8 text-primary">
+			<div className="grid md:grid-cols-2">
+				<div className="flex justify-evenly w-full md:max-w-[300px] uppercase">
 					<div>
-						<h2>Support</h2>
+						<h2 className="font-bold">Support</h2>
 						<ul>
-							<li>Help Center</li>
-							<li>Contact Us</li>
-							<li>API status</li>
-							<li>Documentation</li>
+							<li className="text-sm py-2">Help Center</li>
+							<li className="text-sm py-2">Contact Us</li>
+							<li className="text-sm py-2">API status</li>
+							<li className="text-sm py-2">Documentation</li>
 						</ul>
 					</div>
 
 					<div>
-						<h2>Info</h2>
+						<h2 className="font-bold">Info</h2>
 						<ul>
-							<li>About Us</li>
-							<li>Careers</li>
-							<li>Invest</li>
-							<li>Legal</li>
+							<li className="text-sm py-2">About Us</li>
+							<li className="text-sm py-2">Careers</li>
+							<li className="text-sm py-2">Invest</li>
+							<li className="text-sm py-2">Legal</li>
 						</ul>
 					</div>
 				</div>
 
-				<div>
-					<div>
-						<div>
-							<div>
+				<div className="text-right">
+					<div className="w-full flex justify-end">
+						<div className="w-full md:w-[300px] py-4 relative">
+							<div className="flex justify-center md:justify-end py-4 md:py-0 md:pb-4 mt-[-1rem]">
 								<ThemeToggleBtn />
 							</div>
-							<p>Sign up for crypto news</p>
+							<p className="text-center md:text-right">
+								Sign up for crypto news
+							</p>
+							<div className="py-4">
+								<form>
+									<input
+										className="bg-primary border-input p-2 mr-2 w-full shadow-xl rounded-2xl md:w-auto"
+										type="email"
+										placeholder="Enter Your Email"
+									/>
+									<button className="bg-button text-btnText px-4 p-2 w-full rounded-2xl shadow-xl hover:shadow-2xl md:w-auto my-2">Register</button>
+								</form>
+							</div>
+							<div className="flex py-4 justify-between text-accent">
+								<AiOutlineInstagram />
+								<FaTiktok />
+								<FaTwitter />
+								<FaFacebook />
+								<FaGithub />
+							</div>
 						</div>
-            <div>
-              <form>
-                <input type="email" placeholder="Enter Your Email"/>
-                <button>Register</button>
-              </form>
-              <div>
-                <AiOutlineInstagram />
-                <FaTiktok />
-                <FaTwitter />
-                <FaFacebook />
-                <FaGithub />
-              </div>
-            </div>
 					</div>
 				</div>
 			</div>
-      <p className="text-center py-4">Powered by CoinGecko API</p>
+			<p className="text-center py-4">Powered by CoinGecko API</p>
 		</div>
 	);
 };
