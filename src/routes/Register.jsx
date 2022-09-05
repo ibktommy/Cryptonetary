@@ -3,18 +3,31 @@ import { AiOutlineMail, AiFillLock } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from '../context/AuthContext'
 
-const Logout = () => {
+const Register = () => {
 	// Getting Values from the App Context
-	const { register } = UserAuth()
+	const { register } = UserAuth();
 
 	// Setting State in Form-Register
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
-	const [confirmPassword, setConfirmPassword] = useState('')
-	const [error, setError] = useState('')
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
+	const [error, setError] = useState("");
 
-	// Using Navigate 
-	const navigate = useNavigate()
+	// Using Navigate
+	// const navigate = useNavigate()
+
+	// Form Submit Function
+	const formSubmitHandler = async (e) => {
+		e.preventDefault();
+
+		setError("");
+
+		try {
+			await register(email, password, confirmPassword);
+		} catch (error) {
+			setError(error.message);
+		}
+	};
 
 	return (
 		<div>
@@ -28,7 +41,7 @@ const Logout = () => {
 						{error}
 					</p>
 				) : null}
-				<form>
+				<form onSubmit={formSubmitHandler}>
 					<div className="my-4">
 						<label htmlFor="email">Email</label>
 						<div className="my-2 w-full relative rounded-2xl shadow-xl">
@@ -42,6 +55,7 @@ const Logout = () => {
 							<AiOutlineMail className="absolute right-2 top-3 text-gray-400" />
 						</div>
 					</div>
+
 					<div className="my-4">
 						<label htmlFor="password">Password</label>
 						<div className="my-2 w-full relative rounded-2xl shadow-xl">
@@ -55,6 +69,7 @@ const Logout = () => {
 							<AiFillLock className="absolute right-2 top-3 text-gray-400" />
 						</div>
 					</div>
+
 					<div className="my-4">
 						<label htmlFor="password">Confirm Password</label>
 						<div className="my-2 w-full relative rounded-2xl shadow-xl">
@@ -68,10 +83,12 @@ const Logout = () => {
 							<AiFillLock className="absolute right-2 top-3 text-gray-400" />
 						</div>
 					</div>
+
 					<button className="w-full my-2 p-3 bg-button text-btnText rounded-2xl shadow-xl">
 						Register
 					</button>
 				</form>
+
 				<p className="my-4">
 					Already have an account?{" "}
 					<Link to="/login" className=" text-red-400 ml-2">
@@ -83,4 +100,4 @@ const Logout = () => {
 	);
 };
 
-export default Logout;
+export default Register;

@@ -7,43 +7,51 @@ const UserAuthContext = createContext()
 
 export const UserAuthContextProvider = ({ children }) => {
   // Set User State
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState([])
 
   // Setting Auth Function-Values
-  const register = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
-    return setDoc(doc(db, 'users', email), {watchList: []})
-  }
+  const register = async (email, password, confirmPassword) => {
+		await createUserWithEmailAndPassword(auth, email, password, confirmPassword);
 
-  const login = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password)
-  }
-
-  const logout = () => {
-    return signOut(auth)
-  }
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser)
-    })
-    return () => {
-      unsubscribe()
+    try {
+      await setDoc(doc(db, 'users', email), {
+        watchList: [],
+      })
+    } catch (error) {
+      console.log(error.message)
     }
-  }, [])
+    
+	};
 
+	const login = (email, password) => {
+		return signInWithEmailAndPassword(auth, email, password);
+	};
 
+	const logout = () => {
+		return signOut(auth);
+	};
 
-  return (
-    <UserAuthContext.Provider value={{
-      register,
-      login,
-      logout,
-      user
-    }}>
-      { children }
-    </UserAuthContext.Provider>
-  )
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+			setUser(currentUser);
+		});
+		return () => {
+			unsubscribe();
+		};
+	}, []);
+
+	return (
+		<UserAuthContext.Provider
+			value={{
+				register,
+				login,
+				logout,
+				user,
+			}}
+		>
+			{children}
+		</UserAuthContext.Provider>
+	);
 }
 
 export const UserAuth = () => {
