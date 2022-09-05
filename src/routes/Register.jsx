@@ -10,6 +10,7 @@ const Logout = () => {
 	// Setting State in Form-Register
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [confirmPassword, setConfirmPassword] = useState('')
 	const [error, setError] = useState('')
 
 	// Using Navigate 
@@ -19,8 +20,14 @@ const Logout = () => {
 		<div>
 			<div className="max-w-[400px] mx-auto min-h-[600px] px-4 py-20">
 				<h1 className="text-2xl font-bold">Register</h1>
-				{error ? <p className="bg-red-300 p-3
-				 my-2">{error}</p> : null}
+				{error ? (
+					<p
+						className="bg-red-300 p-3
+				 my-2"
+					>
+						{error}
+					</p>
+				) : null}
 				<form>
 					<div className="my-4">
 						<label htmlFor="email">Email</label>
@@ -30,6 +37,7 @@ const Logout = () => {
 								type="email"
 								id="email"
 								placeholder="Enter your email"
+								onChange={(e) => setEmail(e.target.value)}
 							/>
 							<AiOutlineMail className="absolute right-2 top-3 text-gray-400" />
 						</div>
@@ -42,6 +50,7 @@ const Logout = () => {
 								type="password"
 								name="password"
 								placeholder="Enter your password"
+								onChange={(e) => setPassword(e.target.value)}
 							/>
 							<AiFillLock className="absolute right-2 top-3 text-gray-400" />
 						</div>
@@ -54,6 +63,7 @@ const Logout = () => {
 								type="password"
 								name="password"
 								placeholder="Confirm password"
+								onChange={(e) => setConfirmPassword(e.target.value)}
 							/>
 							<AiFillLock className="absolute right-2 top-3 text-gray-400" />
 						</div>
