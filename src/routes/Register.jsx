@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineMail, AiFillLock } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from '../context/AuthContext'
 
 const Logout = () => {
+	// Getting Values from the App Context
+	const { register } = UserAuth()
+
+	// Setting State in Form-Register
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const [error, setError] = useState('')
+
+	// Using Navigate 
+	const navigate = useNavigate()
+
 	return (
 		<div>
 			<div className="max-w-[400px] mx-auto min-h-[600px] px-4 py-20">
 				<h1 className="text-2xl font-bold">Register</h1>
+				{error ? <p className="bg-red-300 p-3
+				 my-2">{error}</p> : null}
 				<form>
 					<div className="my-4">
 						<label htmlFor="email">Email</label>
