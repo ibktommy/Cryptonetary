@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 
 const SavedCoin = () => {
-	const [savedCoins, setSavedCoins] = useState([1]);
+	const [savedCoins, setSavedCoins] = useState([0]);
 
 	return (
 		<div>
@@ -25,9 +25,9 @@ const SavedCoin = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{savedCoins.map((coin) => {
+						{savedCoins.map((coin, id) => {
 							return (
-								<tr key={coin?.id} className="h-[60px] overflow-hidden">
+								<tr className="h-[60px] overflow-hidden" key={id}>
 									<td>{coin?.rank}</td>
 									<td>
 										<Link to={`/coin/${coin.id}`}>
