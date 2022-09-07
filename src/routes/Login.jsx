@@ -40,6 +40,7 @@ const Login = () => {
 								type="email"
 								id="email"
 								placeholder="Enter your email"
+								onChange={(e) => setEmail(e.target.value)}
 							/>
 							<AiOutlineMail className="absolute right-2 top-3 text-gray-400" />
 						</div>
@@ -52,6 +53,7 @@ const Login = () => {
 								type="password"
 								name="password"
 								placeholder="Enter your password"
+								onChange={(e) => setPassword(e.target.value)}
 							/>
 							<AiFillLock className="absolute right-2 top-3 text-gray-400" />
 						</div>
