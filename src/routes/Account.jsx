@@ -1,5 +1,6 @@
 import React from "react";
 import SavedCoin from "../components/SavedCoin";
+import {  user } from '../context/AuthContext'
 
 const Account = () => {
 	return (
