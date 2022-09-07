@@ -23,8 +23,8 @@ export const UserAuthContextProvider = ({ children }) => {
     
 	};
 
-	const login = (email, password) => {
-		return signInWithEmailAndPassword(auth, email, password);
+	const login = async (email, password) => {
+		return await signInWithEmailAndPassword(auth, email, password);
 	};
 
 	const logout = () => {

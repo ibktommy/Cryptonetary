@@ -1,13 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineMail, AiFillLock } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
 
 const Login = () => {
+	// Get login value from the AuthContext
+	const { login } = UserAuth();
+
+	// Setting State
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [error, setError] = useState("");
+
+	// Using Navigate Hook
+	const navigate = useNavigate();
+
+	// Function Called when Form is Submitted
+	const loginSubmitHandler = async (e) => {
+		e.preventDefault();
+
+		setError("");
+		try {
+			await login(email, password);
+		} catch (error) {
+			setError(error.message);
+		}
+	};
+
 	return (
 		<div>
 			<div className="max-w-[400px] mx-auto min-h-[600px] px-4 py-20">
 				<h1 className="text-2xl font-bold">Login</h1>
-				<form>
+				<form onSubmit={loginSubmitHandler}>
 					<div className="my-4">
 						<label htmlFor="email">Email</label>
 						<div className="my-2 w-full relative rounded-2xl shadow-xl">
