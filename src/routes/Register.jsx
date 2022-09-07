@@ -14,7 +14,7 @@ const Register = () => {
 	const [error, setError] = useState("");
 
 	// Using Navigate
-	// const navigate = useNavigate()
+	const navigate = useNavigate()
 
 	// Form Submit Function
 	const formSubmitHandler = async (e) => {
@@ -24,6 +24,7 @@ const Register = () => {
 
 		try {
 			await register(email, password, confirmPassword);
+			navigate('/account')
 		} catch (error) {
 			setError(error.message);
 		}

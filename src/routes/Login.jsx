@@ -22,6 +22,7 @@ const Login = () => {
 		setError("");
 		try {
 			await login(email, password);
+			navigate("/account");
 		} catch (error) {
 			setError(error.message);
 		}
@@ -31,6 +32,14 @@ const Login = () => {
 		<div>
 			<div className="max-w-[400px] mx-auto min-h-[600px] px-4 py-20">
 				<h1 className="text-2xl font-bold">Login</h1>
+				{error ? (
+					<p
+						className="bg-red-300 p-3
+				 my-2"
+					>
+						{error}
+					</p>
+				) : null}
 				<form onSubmit={loginSubmitHandler}>
 					<div className="my-4">
 						<label htmlFor="email">Email</label>
