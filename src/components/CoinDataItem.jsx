@@ -6,7 +6,7 @@ import { Sparklines, SparklinesLine } from "react-sparklines";
 const dataItem = ({ dataItem }) => {
 	return (
 		<tr className="h=[80px] border-b overflow-hidden">
-			<td>
+			<td className="cursor-pointer">
 				<AiOutlineStar />
 			</td>
 
