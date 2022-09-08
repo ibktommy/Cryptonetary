@@ -1,13 +1,17 @@
-import React from "react";
-import { AiOutlineStar } from "react-icons/ai";
+import React, { useState } from "react";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { Sparklines, SparklinesLine } from "react-sparklines";
 
-const dataItem = ({ dataItem }) => {
+const DataItem = ({ dataItem }) => {
+	// Setting State to Monitor if coin is selected and saved
+	const [savedCoin, setSavedCoin] = useState(false);
+
 	return (
 		<tr className="h=[80px] border-b overflow-hidden">
 			<td className="cursor-pointer">
-				<AiOutlineStar />
+				{" "}
+				{savedCoin ? <AiFillStar /> : <AiOutlineStar />}
 			</td>
 
 			<td>{dataItem.market_cap_rank}</td>
@@ -53,4 +57,4 @@ const dataItem = ({ dataItem }) => {
 	);
 };
 
-export default dataItem;
+export default DataItem;
