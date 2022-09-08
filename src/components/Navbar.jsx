@@ -78,7 +78,7 @@ const Navbar = () => {
 			<div
 				className={
 					!nav
-						? "fixed left-[-100%] top-20 h-[90%]"
+						? "fixed left-[-100%] top-20 h-[90%] ease-in duration-300"
 						: "md:hidden fixed left-0 top-20 flex flex-col items-center justify-between w-full h-[90%] bg-primary ease-in duration-300 z-10"
 				}
 			>
