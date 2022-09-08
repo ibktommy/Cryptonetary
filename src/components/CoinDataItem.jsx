@@ -2,14 +2,42 @@ import React, { useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { Sparklines, SparklinesLine } from "react-sparklines";
+import { UserAuth } from "../context/AuthContext";
+import { db } from "../firebase";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
 const DataItem = ({ dataItem }) => {
 	// Setting State to Monitor if coin is selected and saved
 	const [savedCoin, setSavedCoin] = useState(false);
 
+	// Destructuring Values from AuthContext
+	const { user } = UserAuth();
+
+	// Destructuring Values from Firestore Database
+	const coinPath = doc(db, "users", `${user?.email}`);
+
+	// Function to save user Data to the Firestore Database
+	const saveCoinHandler = async () => {
+		if (user?.email) {
+			setSavedCoin(true);
+
+			await updateDoc(coinPath, {
+				watchList: arrayUnion({
+					id: dataItem.id,
+					name: dataItem.name,
+					image: dataItem.image,
+					rank: dataItem.market_cap_rank,
+					symbol: dataItem.symbol,
+				}),
+			});
+		} else {
+			alert("YOU HAVE TO REGISTER OR LOGIN TO ADD COIN TO YOUR WATCHLIST");
+		}
+	};
+
 	return (
 		<tr className="h=[80px] border-b overflow-hidden">
-			<td className="cursor-pointer">
+			<td className="cursor-pointer" onClick={saveCoinHandler}>
 				{" "}
 				{savedCoin ? <AiFillStar /> : <AiOutlineStar />}
 			</td>

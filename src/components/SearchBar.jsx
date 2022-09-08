@@ -22,7 +22,9 @@ const SearchBar = ({ data }) => {
 			<table className="w-full border-collapse text-center">
 				<thead>
 					<tr className="border-b">
-						<th className="text-left w-20">Click Star to Save Coin</th>
+						<th className="text-left w-20 text-sm">
+							Click Star to Add Coin to WatchList
+						</th>
 						<th className="px-4">#</th>
 						<th className="text-left">Coin-Icon</th>
 						<th>Coin-Name</th>
