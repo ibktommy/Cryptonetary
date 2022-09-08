@@ -17,7 +17,6 @@ const CoinPage = () => {
 	useEffect(() => {
 		axios.get(url).then((response) => {
 			setCoin(response.data);
-			console.log(response.data);
 		});
 	}, [url]);
 
@@ -27,7 +26,7 @@ const CoinPage = () => {
 				<img className="w-20 mr-8" src={coin?.image?.large} alt={coin?.name} />
 				<div>
 					<p className="text-3xl font-bold">{coin?.name} price</p>
-					<p>({coin?.symbol?.toUpperCase}) / USD</p>
+					<p>({coin?.symbol?.toUpperCase()}) / USD</p>
 				</div>
 			</div>
 

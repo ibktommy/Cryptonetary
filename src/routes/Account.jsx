@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import SavedCoin from "../components/SavedCoin";
 import { UserAuth } from "../context/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebase";
 
 const Account = () => {
 	const { user, logout } = UserAuth();

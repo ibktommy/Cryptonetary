@@ -11,7 +11,6 @@ const Trending = () => {
 	useEffect(() => {
 		axios.get(trendingURL).then((response) => {
 			setTrending(response.data.coins);
-			console.log(response.data.coins);
 		});
 	}, []);
 

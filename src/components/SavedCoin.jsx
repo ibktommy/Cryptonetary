@@ -9,8 +9,6 @@ const SavedCoin = () => {
 	const [savedCoins, setSavedCoins] = useState([]);
 	const { user } = UserAuth();
 
-	console.log(savedCoins.length);
-
 	// Getting the Data-items in the Firestore Database with useEffect After Component renders
 	useEffect(() => {
 		onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
