@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
+import { db } from "../firebase";
+import { UserAuth } from "../context/AuthContext";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 
 const SavedCoin = () => {
 	const [savedCoins, setSavedCoins] = useState([0]);
+	const { user } = UserAuth();
+
+	// Getting the Data-items in the Firestore Database with useEffect After Component renders
+	useEffect(() => {
+		onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+			setSavedCoins(doc.data()?.watchList);
+		});
+	}, [user?.email]);
 
 	return (
 		<div>
@@ -33,7 +44,7 @@ const SavedCoin = () => {
 										<Link to={`/coin/${coin.id}`}>
 											<div className="flex items-center">
 												<img
-													src={coin?.name}
+													src={coin?.image}
 													alt={coin?.name}
 													className="w-8 mr-4"
 												/>
