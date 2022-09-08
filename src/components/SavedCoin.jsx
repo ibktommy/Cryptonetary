@@ -9,12 +9,14 @@ const SavedCoin = () => {
 	const [savedCoins, setSavedCoins] = useState([]);
 	const { user } = UserAuth();
 
+	console.log(savedCoins.length);
+
 	// Getting the Data-items in the Firestore Database with useEffect After Component renders
 	useEffect(() => {
-		onSnapshot(doc(db, "users", `${user.email}`), (doc) => {
+		onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
 			setSavedCoins(doc.data()?.watchList);
 		});
-	}, [user.email]);
+	}, [user?.email]);
 
 	// Funtion to Delete An item from the setSavedCoin-state-Array
 	const coinPath = doc(db, "users", `${user?.email}`); //Getting Path of Item in Database
@@ -33,7 +35,7 @@ const SavedCoin = () => {
 
 	return (
 		<div>
-			{savedCoins.length === 0 ? (
+			{savedCoins?.length === 0 ? (
 				<p>
 					You don't have any coins saved. Please save a coin to add it to the
 					Watchlist.{" "}
@@ -51,9 +53,9 @@ const SavedCoin = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{savedCoins.map((coin, id) => {
+						{savedCoins?.map((coin) => {
 							return (
-								<tr className="h-[60px] overflow-hidden" key={id}>
+								<tr className="h-[60px] overflow-hidden" key={coin?.id}>
 									<td>{coin?.rank}</td>
 									<td>
 										<Link to={`/coin/${coin.id}`}>

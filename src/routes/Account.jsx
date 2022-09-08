@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SavedCoin from "../components/SavedCoin";
-import {  UserAuth } from '../context/AuthContext'
+import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const Account = () => {
 	const { user, logout } = UserAuth();
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	// Function to Handle Logout Button
 	const logOutHandler = async () => {
@@ -38,7 +40,7 @@ const Account = () => {
 			<div className="flex justify-between items-center my-12 py-8 rounded-div">
 				<div className="w-full min-h-[300px]">
 					<h1 className="text-2xl font-bold py-4">Watch List</h1>
-					<SavedCoin />
+					{user?.email && <SavedCoin />}
 				</div>
 			</div>
 		</div>
