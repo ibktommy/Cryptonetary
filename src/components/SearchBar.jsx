@@ -39,13 +39,9 @@ const SearchBar = ({ data }) => {
 				<tbody>
 					{data
 						.filter((value) => {
-							if (searchText === "") {
-								return value;
-							} else if (
-								value.name.toLowerCase().includes(searchText.toLowerCase())
-							) {
-								return value;
-							}
+							return value.name
+								.toLowerCase()
+								.includes(searchText.toLowerCase());
 						})
 						.map((dataItem) => (
 							<DataItem key={dataItem.id} dataItem={dataItem} />
